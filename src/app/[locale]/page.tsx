@@ -131,8 +131,15 @@ import {
   Edit,
   MoreHorizontal,
 } from "lucide-react";
+import { useTranslations, useLocale } from "next-intl";
+import { useRouter, usePathname } from "@/i18n/navigation";
 
 export default function Home() {
+  const t = useTranslations("Home");
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+
   const [progress, setProgress] = useState(13);
   const [sliderValue, setSliderValue] = useState([50]);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(
@@ -140,40 +147,64 @@ export default function Home() {
   );
 
   const chartData = [
-    { month: "Jan", total: 120 },
-    { month: "Feb", total: 200 },
-    { month: "Mar", total: 150 },
-    { month: "Apr", total: 300 },
-    { month: "May", total: 250 },
-    { month: "Jun", total: 400 },
+    { month: t("chart.jan"), total: 120 },
+    { month: t("chart.feb"), total: 200 },
+    { month: t("chart.mar"), total: 150 },
+    { month: t("chart.apr"), total: 300 },
+    { month: t("chart.may"), total: 250 },
+    { month: t("chart.jun"), total: 400 },
   ];
+
+  // Language switcher handler
+  function handleSwitchLocale(locale: "en" | "fa") {
+    // Replace the locale in the pathname
+    router.replace(pathname, { locale });
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-4">
+      {/* Language Switcher */}
+      <div className="flex justify-end mb-4">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline">
+              {t("data.dropdownMenu.language")}
+              <MoreHorizontal className="ml-2 h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem onClick={() => handleSwitchLocale("en")}>
+              English
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleSwitchLocale("fa")}>
+              فارسی
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
       <main className="container mx-auto max-w-7xl space-y-8">
         {/* Header */}
         <div className="text-center space-y-4">
           <h1 className="text-5xl font-bold bg-gradient-to-r from-slate-900 to-slate-600 bg-clip-text text-transparent">
-            shadcn/ui Component Library
+            {t("header.title")}
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive showcase of all available components with beautiful
-            examples and interactions
+            {t("header.description")}
           </p>
           <div className="flex justify-center gap-2">
-            <Badge variant="default">27 Components</Badge>
-            <Badge variant="secondary">React 19</Badge>
-            <Badge variant="outline">TypeScript</Badge>
+            <Badge variant="default">{t("header.componentsCount")}</Badge>
+            <Badge variant="secondary">{t("header.reactVersion")}</Badge>
+            <Badge variant="outline">{t("header.ts")}</Badge>
           </div>
         </div>
 
         {/* Navigation Tabs */}
         <Tabs defaultValue="basic" className="w-full">
           <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="basic">Basic Components</TabsTrigger>
-            <TabsTrigger value="forms">Form Elements</TabsTrigger>
-            <TabsTrigger value="feedback">Feedback</TabsTrigger>
-            <TabsTrigger value="data">Data Display</TabsTrigger>
+            <TabsTrigger value="basic">{t("tabs.basic")}</TabsTrigger>
+            <TabsTrigger value="forms">{t("tabs.forms")}</TabsTrigger>
+            <TabsTrigger value="feedback">{t("tabs.feedback")}</TabsTrigger>
+            <TabsTrigger value="data">{t("tabs.data")}</TabsTrigger>
           </TabsList>
 
           {/* Basic Components Tab */}
@@ -184,23 +215,33 @@ export default function Home() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <User className="h-5 w-5" />
-                    Buttons
+                    {t("basic.buttons.title")}
                   </CardTitle>
-                  <CardDescription>Multiple variants and sizes</CardDescription>
+                  <CardDescription>
+                    {t("basic.buttons.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex flex-wrap gap-2">
-                    <Button>Default</Button>
-                    <Button variant="secondary">Secondary</Button>
-                    <Button variant="outline">Outline</Button>
-                    <Button variant="ghost">Ghost</Button>
-                    <Button variant="destructive">Destructive</Button>
-                    <Button variant="link">Link</Button>
+                    <Button>{t("basic.buttons.default")}</Button>
+                    <Button variant="secondary">
+                      {t("basic.buttons.secondary")}
+                    </Button>
+                    <Button variant="outline">
+                      {t("basic.buttons.outline")}
+                    </Button>
+                    <Button variant="ghost">{t("basic.buttons.ghost")}</Button>
+                    <Button variant="destructive">
+                      {t("basic.buttons.destructive")}
+                    </Button>
+                    <Button variant="link">{t("basic.buttons.link")}</Button>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    <Button size="sm">Small</Button>
-                    <Button size="default">Default</Button>
-                    <Button size="lg">Large</Button>
+                    <Button size="sm">{t("basic.buttons.small")}</Button>
+                    <Button size="default">
+                      {t("basic.buttons.defaultSize")}
+                    </Button>
+                    <Button size="lg">{t("basic.buttons.large")}</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -210,19 +251,21 @@ export default function Home() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Settings className="h-5 w-5" />
-                    Cards
+                    {t("basic.cards.title")}
                   </CardTitle>
-                  <CardDescription>Flexible containers</CardDescription>
+                  <CardDescription>
+                    {t("basic.cards.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
                     <div className="h-20 bg-muted rounded-md flex items-center justify-center">
                       <span className="text-sm text-muted-foreground">
-                        Card Content
+                        {t("basic.cards.contentPlaceholder")}
                       </span>
                     </div>
                     <p className="text-xs text-muted-foreground">
-                      Cards provide structure and organization
+                      {t("basic.cards.descriptionText")}
                     </p>
                   </div>
                 </CardContent>
@@ -233,16 +276,22 @@ export default function Home() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Info className="h-5 w-5" />
-                    Badges
+                    {t("basic.badges.title")}
                   </CardTitle>
-                  <CardDescription>Status indicators</CardDescription>
+                  <CardDescription>
+                    {t("basic.badges.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex flex-wrap gap-2">
-                    <Badge>Default</Badge>
-                    <Badge variant="secondary">Secondary</Badge>
-                    <Badge variant="outline">Outline</Badge>
-                    <Badge variant="destructive">Destructive</Badge>
+                    <Badge>{t("basic.badges.default")}</Badge>
+                    <Badge variant="secondary">
+                      {t("basic.badges.secondary")}
+                    </Badge>
+                    <Badge variant="outline">{t("basic.badges.outline")}</Badge>
+                    <Badge variant="destructive">
+                      {t("basic.badges.destructive")}
+                    </Badge>
                   </div>
                 </CardContent>
               </Card>
@@ -250,8 +299,10 @@ export default function Home() {
               {/* Separator */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Separator</CardTitle>
-                  <CardDescription>Visual dividers</CardDescription>
+                  <CardTitle>{t("basic.separator.title")}</CardTitle>
+                  <CardDescription>
+                    {t("basic.separator.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div>Content above</div>
@@ -263,8 +314,10 @@ export default function Home() {
               {/* Skeleton */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Skeleton</CardTitle>
-                  <CardDescription>Loading placeholders</CardDescription>
+                  <CardTitle>{t("basic.skeleton.title")}</CardTitle>
+                  <CardDescription>
+                    {t("basic.skeleton.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
@@ -278,15 +331,19 @@ export default function Home() {
               {/* Toggle */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Toggle</CardTitle>
-                  <CardDescription>On/off switches</CardDescription>
+                  <CardTitle>{t("basic.toggle.title")}</CardTitle>
+                  <CardDescription>
+                    {t("basic.toggle.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-2">
                     <Toggle aria-label="Toggle bold">
                       <Settings className="h-4 w-4" />
                     </Toggle>
-                    <Label htmlFor="toggle">Settings</Label>
+                    <Label htmlFor="toggle">
+                      {t("basic.toggle.settingsLabel")}
+                    </Label>
                   </div>
                 </CardContent>
               </Card>
@@ -299,24 +356,30 @@ export default function Home() {
               {/* Input Fields */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Input Fields</CardTitle>
-                  <CardDescription>Text and email inputs</CardDescription>
+                  <CardTitle>{t("forms.inputFields.title")}</CardTitle>
+                  <CardDescription>
+                    {t("forms.inputFields.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email">
+                      {t("forms.inputFields.emailLabel")}
+                    </Label>
                     <Input
                       id="email"
                       type="email"
-                      placeholder="Enter your email"
+                      placeholder={t("forms.inputFields.emailPlaceholder")}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="password">Password</Label>
+                    <Label htmlFor="password">
+                      {t("forms.inputFields.passwordLabel")}
+                    </Label>
                     <Input
                       id="password"
                       type="password"
-                      placeholder="Enter your password"
+                      placeholder={t("forms.inputFields.passwordPlaceholder")}
                     />
                   </div>
                 </CardContent>
@@ -325,28 +388,36 @@ export default function Home() {
               {/* Textarea */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Textarea</CardTitle>
-                  <CardDescription>Multi-line text input</CardDescription>
+                  <CardTitle>{t("forms.textarea.title")}</CardTitle>
+                  <CardDescription>
+                    {t("forms.textarea.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Textarea placeholder="Type your message here." />
+                  <Textarea placeholder={t("forms.textarea.placeholder")} />
                 </CardContent>
               </Card>
 
               {/* Checkbox */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Checkbox</CardTitle>
-                  <CardDescription>Multiple choice selection</CardDescription>
+                  <CardTitle>{t("forms.checkbox.title")}</CardTitle>
+                  <CardDescription>
+                    {t("forms.checkbox.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-2">
                     <Checkbox id="terms" />
-                    <Label htmlFor="terms">Accept terms and conditions</Label>
+                    <Label htmlFor="terms">
+                      {t("forms.checkbox.termsLabel")}
+                    </Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Checkbox id="newsletter" />
-                    <Label htmlFor="newsletter">Subscribe to newsletter</Label>
+                    <Label htmlFor="newsletter">
+                      {t("forms.checkbox.newsletterLabel")}
+                    </Label>
                   </div>
                 </CardContent>
               </Card>
@@ -354,17 +425,23 @@ export default function Home() {
               {/* Switch */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Switch</CardTitle>
-                  <CardDescription>Toggle switches</CardDescription>
+                  <CardTitle>{t("forms.switch.title")}</CardTitle>
+                  <CardDescription>
+                    {t("forms.switch.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-2">
                     <Switch id="airplane-mode" />
-                    <Label htmlFor="airplane-mode">Airplane Mode</Label>
+                    <Label htmlFor="airplane-mode">
+                      {t("forms.switch.airplaneModeLabel")}
+                    </Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Switch id="notifications" />
-                    <Label htmlFor="notifications">Notifications</Label>
+                    <Label htmlFor="notifications">
+                      {t("forms.switch.notificationsLabel")}
+                    </Label>
                   </div>
                 </CardContent>
               </Card>
@@ -372,18 +449,24 @@ export default function Home() {
               {/* Radio Group */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Radio Group</CardTitle>
-                  <CardDescription>Single choice selection</CardDescription>
+                  <CardTitle>{t("forms.radioGroup.title")}</CardTitle>
+                  <CardDescription>
+                    {t("forms.radioGroup.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <RadioGroup defaultValue="option-one">
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="option-one" id="option-one" />
-                      <Label htmlFor="option-one">Option One</Label>
+                      <Label htmlFor="option-one">
+                        {t("forms.radioGroup.optionOneLabel")}
+                      </Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="option-two" id="option-two" />
-                      <Label htmlFor="option-two">Option Two</Label>
+                      <Label htmlFor="option-two">
+                        {t("forms.radioGroup.optionTwoLabel")}
+                      </Label>
                     </div>
                   </RadioGroup>
                 </CardContent>
@@ -392,18 +475,28 @@ export default function Home() {
               {/* Select */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Select</CardTitle>
-                  <CardDescription>Dropdown selection</CardDescription>
+                  <CardTitle>{t("forms.select.title")}</CardTitle>
+                  <CardDescription>
+                    {t("forms.select.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Select>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a fruit" />
+                      <SelectValue
+                        placeholder={t("forms.select.placeholder")}
+                      />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="apple">Apple</SelectItem>
-                      <SelectItem value="banana">Banana</SelectItem>
-                      <SelectItem value="orange">Orange</SelectItem>
+                      <SelectItem value="apple">
+                        {t("forms.select.apple")}
+                      </SelectItem>
+                      <SelectItem value="banana">
+                        {t("forms.select.banana")}
+                      </SelectItem>
+                      <SelectItem value="orange">
+                        {t("forms.select.orange")}
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </CardContent>
@@ -412,8 +505,10 @@ export default function Home() {
               {/* Slider */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Slider</CardTitle>
-                  <CardDescription>Range selection</CardDescription>
+                  <CardTitle>{t("forms.slider.title")}</CardTitle>
+                  <CardDescription>
+                    {t("forms.slider.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <Slider
@@ -424,7 +519,7 @@ export default function Home() {
                     className="w-full"
                   />
                   <div className="text-sm text-muted-foreground">
-                    Value: {sliderValue[0]}
+                    {t("forms.slider.valueText", { value: sliderValue[0] })}
                   </div>
                 </CardContent>
               </Card>
@@ -432,8 +527,10 @@ export default function Home() {
               {/* Input OTP */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Input OTP</CardTitle>
-                  <CardDescription>One-time password input</CardDescription>
+                  <CardTitle>{t("forms.inputOTP.title")}</CardTitle>
+                  <CardDescription>
+                    {t("forms.inputOTP.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <InputOTP maxLength={6}>
@@ -452,8 +549,10 @@ export default function Home() {
               {/* Toggle Group */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Toggle Group</CardTitle>
-                  <CardDescription>Multiple toggle buttons</CardDescription>
+                  <CardTitle>{t("forms.toggleGroup.title")}</CardTitle>
+                  <CardDescription>
+                    {t("forms.toggleGroup.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ToggleGroup type="single">
@@ -481,22 +580,24 @@ export default function Home() {
               {/* Alerts */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Alerts</CardTitle>
-                  <CardDescription>Important messages</CardDescription>
+                  <CardTitle>{t("feedback.alerts.title")}</CardTitle>
+                  <CardDescription>
+                    {t("feedback.alerts.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <Alert>
                     <CheckCircle className="h-4 w-4" />
-                    <AlertTitle>Success!</AlertTitle>
+                    <AlertTitle>{t("feedback.alerts.successTitle")}</AlertTitle>
                     <AlertDescription>
-                      Your changes have been saved successfully.
+                      {t("feedback.alerts.successDescription")}
                     </AlertDescription>
                   </Alert>
                   <Alert variant="destructive">
                     <AlertTriangle className="h-4 w-4" />
-                    <AlertTitle>Error</AlertTitle>
+                    <AlertTitle>{t("feedback.alerts.errorTitle")}</AlertTitle>
                     <AlertDescription>
-                      There was a problem with your request.
+                      {t("feedback.alerts.errorDescription")}
                     </AlertDescription>
                   </Alert>
                 </CardContent>
@@ -505,20 +606,22 @@ export default function Home() {
               {/* Progress */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Progress</CardTitle>
-                  <CardDescription>Loading indicators</CardDescription>
+                  <CardTitle>{t("feedback.progress.title")}</CardTitle>
+                  <CardDescription>
+                    {t("feedback.progress.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <Progress value={progress} className="w-full" />
                   <div className="text-sm text-muted-foreground">
-                    Progress: {progress}%
+                    {t("feedback.progress.valueText", { progress: progress })}
                   </div>
                   <Button
                     onClick={() => setProgress(progress + 10)}
                     disabled={progress >= 100}
                     size="sm"
                   >
-                    Increment
+                    {t("feedback.progress.incrementButton")}
                   </Button>
                 </CardContent>
               </Card>
@@ -526,27 +629,36 @@ export default function Home() {
               {/* Alert Dialog */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Alert Dialog</CardTitle>
-                  <CardDescription>Confirmation dialogs</CardDescription>
+                  <CardTitle>{t("feedback.alertDialog.title")}</CardTitle>
+                  <CardDescription>
+                    {t("feedback.alertDialog.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
-                      <Button variant="destructive">Delete Account</Button>
+                      <Button variant="destructive">
+                        {t("feedback.alertDialog.deleteAccountButton")}
+                      </Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>
                         <AlertDialogTitle>
-                          Are you absolutely sure?
+                          {t("feedback.alertDialog.areYouAbsolutelySureTitle")}
                         </AlertDialogTitle>
                         <AlertDialogDescription>
-                          This action cannot be undone. This will permanently
-                          delete your account.
+                          {t(
+                            "feedback.alertDialog.areYouAbsolutelySureDescription"
+                          )}
                         </AlertDialogDescription>
                       </AlertDialogHeader>
                       <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction>Continue</AlertDialogAction>
+                        <AlertDialogCancel>
+                          {t("feedback.alertDialog.cancel")}
+                        </AlertDialogCancel>
+                        <AlertDialogAction>
+                          {t("feedback.alertDialog.continue")}
+                        </AlertDialogAction>
                       </AlertDialogFooter>
                     </AlertDialogContent>
                   </AlertDialog>
@@ -556,37 +668,50 @@ export default function Home() {
               {/* Dialog */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Dialog</CardTitle>
-                  <CardDescription>Modal dialogs</CardDescription>
+                  <CardTitle>{t("feedback.dialog.title")}</CardTitle>
+                  <CardDescription>
+                    {t("feedback.dialog.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Dialog>
                     <DialogTrigger asChild>
-                      <Button>Open Dialog</Button>
+                      <Button>{t("feedback.dialog.openDialogButton")}</Button>
                     </DialogTrigger>
                     <DialogContent>
                       <DialogHeader>
-                        <DialogTitle>Edit Profile</DialogTitle>
+                        <DialogTitle>
+                          {t("feedback.dialog.editProfileTitle")}
+                        </DialogTitle>
                         <DialogDescription>
-                          {`Make changes to your profile here. Click save when you're done.`}
+                          {t("feedback.dialog.editProfileDescription")}
                         </DialogDescription>
                       </DialogHeader>
                       <div className="space-y-4">
                         <div className="space-y-2">
-                          <Label htmlFor="name">Name</Label>
-                          <Input id="name" placeholder="Enter your name" />
+                          <Label htmlFor="name">
+                            {t("feedback.dialog.nameLabel")}
+                          </Label>
+                          <Input
+                            id="name"
+                            placeholder={t("feedback.dialog.namePlaceholder")}
+                          />
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="email">Email</Label>
+                          <Label htmlFor="email">
+                            {t("feedback.dialog.emailLabel")}
+                          </Label>
                           <Input
                             id="email"
                             type="email"
-                            placeholder="Enter your email"
+                            placeholder={t("feedback.dialog.emailPlaceholder")}
                           />
                         </div>
                       </div>
                       <DialogFooter>
-                        <Button>Save changes</Button>
+                        <Button>
+                          {t("feedback.dialog.saveChangesButton")}
+                        </Button>
                       </DialogFooter>
                     </DialogContent>
                   </Dialog>
@@ -596,41 +721,58 @@ export default function Home() {
               {/* Drawer */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Drawer</CardTitle>
-                  <CardDescription>Side panels</CardDescription>
+                  <CardTitle>{t("feedback.drawer.title")}</CardTitle>
+                  <CardDescription>
+                    {t("feedback.drawer.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Drawer>
                     <DrawerTrigger asChild>
-                      <Button>Open Drawer</Button>
+                      <Button>{t("feedback.drawer.openDrawerButton")}</Button>
                     </DrawerTrigger>
                     <DrawerContent>
                       <DrawerHeader>
-                        <DrawerTitle>Edit Profile</DrawerTitle>
+                        <DrawerTitle>
+                          {t("feedback.drawer.editProfileTitle")}
+                        </DrawerTitle>
                         <DrawerDescription>
-                          Make changes to your profile here.
+                          {t("feedback.drawer.editProfileDescription")}
                         </DrawerDescription>
                       </DrawerHeader>
                       <div className="p-4">
                         <div className="space-y-4">
                           <div className="space-y-2">
-                            <Label htmlFor="name">Name</Label>
-                            <Input id="name" placeholder="Enter your name" />
+                            <Label htmlFor="name">
+                              {t("feedback.drawer.nameLabel")}
+                            </Label>
+                            <Input
+                              id="name"
+                              placeholder={t("feedback.drawer.namePlaceholder")}
+                            />
                           </div>
                           <div className="space-y-2">
-                            <Label htmlFor="email">Email</Label>
+                            <Label htmlFor="email">
+                              {t("feedback.drawer.emailLabel")}
+                            </Label>
                             <Input
                               id="email"
                               type="email"
-                              placeholder="Enter your email"
+                              placeholder={t(
+                                "feedback.drawer.emailPlaceholder"
+                              )}
                             />
                           </div>
                         </div>
                       </div>
                       <DrawerFooter>
-                        <Button>Save changes</Button>
+                        <Button>
+                          {t("feedback.drawer.saveChangesButton")}
+                        </Button>
                         <DrawerClose asChild>
-                          <Button variant="outline">Cancel</Button>
+                          <Button variant="outline">
+                            {t("feedback.drawer.cancelButton")}
+                          </Button>
                         </DrawerClose>
                       </DrawerFooter>
                     </DrawerContent>
@@ -641,19 +783,25 @@ export default function Home() {
               {/* Popover */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Popover</CardTitle>
-                  <CardDescription>Floating content</CardDescription>
+                  <CardTitle>{t("feedback.popover.title")}</CardTitle>
+                  <CardDescription>
+                    {t("feedback.popover.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Popover>
                     <PopoverTrigger asChild>
-                      <Button variant="outline">Open Popover</Button>
+                      <Button variant="outline">
+                        {t("feedback.popover.openPopoverButton")}
+                      </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-80">
                       <div className="space-y-2">
-                        <h4 className="font-medium leading-none">Dimensions</h4>
+                        <h4 className="font-medium leading-none">
+                          {t("feedback.popover.dimensionsTitle")}
+                        </h4>
                         <p className="text-sm text-muted-foreground">
-                          Set the dimensions for the layer.
+                          {t("feedback.popover.dimensionsDescription")}
                         </p>
                       </div>
                     </PopoverContent>
@@ -664,17 +812,21 @@ export default function Home() {
               {/* Tooltip */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Tooltip</CardTitle>
-                  <CardDescription>Hover information</CardDescription>
+                  <CardTitle>{t("feedback.tooltip.title")}</CardTitle>
+                  <CardDescription>
+                    {t("feedback.tooltip.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <Button variant="outline">Hover me</Button>
+                        <Button variant="outline">
+                          {t("feedback.tooltip.hoverMeButton")}
+                        </Button>
                       </TooltipTrigger>
                       <TooltipContent>
-                        <p>This is a tooltip</p>
+                        <p>{t("feedback.tooltip.tooltipText")}</p>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
@@ -689,31 +841,35 @@ export default function Home() {
               {/* Table */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Table</CardTitle>
-                  <CardDescription>Data presentation</CardDescription>
+                  <CardTitle>{t("data.table.title")}</CardTitle>
+                  <CardDescription>
+                    {t("data.table.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead>Name</TableHead>
-                        <TableHead>Email</TableHead>
-                        <TableHead>Status</TableHead>
+                        <TableHead>{t("data.table.name")}</TableHead>
+                        <TableHead>{t("data.table.email")}</TableHead>
+                        <TableHead>{t("data.table.status")}</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       <TableRow>
-                        <TableCell>John Doe</TableCell>
-                        <TableCell>john@example.com</TableCell>
+                        <TableCell>{t("data.table.johnDoeName")}</TableCell>
+                        <TableCell>{t("data.table.johnDoeEmail")}</TableCell>
                         <TableCell>
-                          <Badge>Active</Badge>
+                          <Badge>{t("data.table.activeBadge")}</Badge>
                         </TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell>Jane Smith</TableCell>
-                        <TableCell>jane@example.com</TableCell>
+                        <TableCell>{t("data.table.janeSmithName")}</TableCell>
+                        <TableCell>{t("data.table.janeSmithEmail")}</TableCell>
                         <TableCell>
-                          <Badge variant="secondary">Inactive</Badge>
+                          <Badge variant="secondary">
+                            {t("data.table.inactiveBadge")}
+                          </Badge>
                         </TableCell>
                       </TableRow>
                     </TableBody>
@@ -724,8 +880,10 @@ export default function Home() {
               {/* Calendar */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Calendar</CardTitle>
-                  <CardDescription>Date selection</CardDescription>
+                  <CardTitle>{t("data.calendar.title")}</CardTitle>
+                  <CardDescription>
+                    {t("data.calendar.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Calendar
@@ -740,14 +898,16 @@ export default function Home() {
               {/* Chart */}
               <Card className="col-span-2">
                 <CardHeader>
-                  <CardTitle>Chart</CardTitle>
-                  <CardDescription>Data visualization</CardDescription>
+                  <CardTitle>{t("data.chart.title")}</CardTitle>
+                  <CardDescription>
+                    {t("data.chart.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ChartContainer
                     config={{
                       total: {
-                        label: "Total",
+                        label: t("data.chart.totalLabel"),
                         color: "#8884d8",
                       },
                     }}
@@ -783,8 +943,10 @@ export default function Home() {
               {/* Pagination */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Pagination</CardTitle>
-                  <CardDescription>Page navigation</CardDescription>
+                  <CardTitle>{t("data.pagination.title")}</CardTitle>
+                  <CardDescription>
+                    {t("data.pagination.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Pagination>
@@ -817,31 +979,35 @@ export default function Home() {
               {/* Dropdown Menu */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Dropdown Menu</CardTitle>
-                  <CardDescription>Context menus</CardDescription>
+                  <CardTitle>{t("data.dropdownMenu.title")}</CardTitle>
+                  <CardDescription>
+                    {t("data.dropdownMenu.description")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="outline">
-                        Actions
+                        {t("data.dropdownMenu.actionsButton")}
                         <MoreHorizontal className="ml-2 h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                      <DropdownMenuLabel>
+                        {t("data.dropdownMenu.actionsLabel")}
+                      </DropdownMenuLabel>
                       <DropdownMenuItem>
                         <Edit className="mr-2 h-4 w-4" />
-                        Edit
+                        {t("data.dropdownMenu.edit")}
                       </DropdownMenuItem>
                       <DropdownMenuItem>
                         <Download className="mr-2 h-4 w-4" />
-                        Download
+                        {t("data.dropdownMenu.download")}
                       </DropdownMenuItem>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem>
                         <Trash2 className="mr-2 h-4 w-4" />
-                        Delete
+                        {t("data.dropdownMenu.delete")}
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
@@ -853,9 +1019,7 @@ export default function Home() {
 
         {/* Footer */}
         <div className="text-center py-8 border-t">
-          <p className="text-muted-foreground">
-            Built with ❤️ using shadcn/ui and Next.js
-          </p>
+          <p className="text-muted-foreground">{t("footer.builtWith")}</p>
           <div className="flex justify-center gap-4 mt-4">
             <Button variant="outline" asChild>
               <a
@@ -863,7 +1027,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Documentation
+                {t("footer.documentation")}
               </a>
             </Button>
             <Button variant="outline" asChild>
@@ -872,7 +1036,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                GitHub
+                {t("footer.github")}
               </a>
             </Button>
           </div>
