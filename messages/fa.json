@@ -1,0 +1,228 @@
+{
+  "welcome": "خوش آمدید",
+  "Home": {
+    "header": {
+      "title": "کتابخانه کامپوننت shadcn/ui",
+      "description": "نمایش جامع تمام کامپوننت‌ها با مثال‌ها و تعاملات زیبا",
+      "componentsCount": "۲۷ کامپوننت",
+      "reactVersion": "ری‌اکت ۱۹",
+      "ts": "تایپ‌اسکریپت"
+    },
+    "tabs": {
+      "basic": "کامپوننت‌های پایه",
+      "forms": "عناصر فرم",
+      "feedback": "بازخورد",
+      "data": "نمایش داده"
+    },
+    "chart": {
+      "jan": "ژانویه",
+      "feb": "فوریه",
+      "mar": "مارس",
+      "apr": "آوریل",
+      "may": "مه",
+      "jun": "ژوئن"
+    },
+    "basic": {
+      "buttons": {
+        "title": "دکمه‌ها",
+        "description": "انواع و اندازه‌های مختلف",
+        "default": "پیش‌فرض",
+        "secondary": "ثانویه",
+        "outline": "حاشیه‌دار",
+        "ghost": "روح",
+        "destructive": "مخرب",
+        "link": "لینک",
+        "small": "کوچک",
+        "defaultSize": "پیش‌فرض",
+        "large": "بزرگ"
+      },
+      "cards": {
+        "title": "کارت‌ها",
+        "description": "ظروف انعطاف‌پذیر",
+        "contentPlaceholder": "محتوای کارت",
+        "descriptionText": "کارت‌ها ساختار و سازمان‌دهی را فراهم می‌کنند"
+      },
+      "badges": {
+        "title": "نشان‌ها",
+        "description": "نمایش وضعیت",
+        "default": "پیش‌فرض",
+        "secondary": "ثانویه",
+        "outline": "حاشیه‌دار",
+        "destructive": "مخرب"
+      },
+      "separator": {
+        "title": "جداکننده",
+        "description": "تقسیم‌کننده‌های بصری"
+      },
+      "skeleton": {
+        "title": "اسکلتون",
+        "description": "جای‌نگهدار بارگذاری"
+      },
+      "toggle": {
+        "title": "سوییچ",
+        "description": "کلیدهای روشن/خاموش",
+        "settingsLabel": "تنظیمات"
+      }
+    },
+    "forms": {
+      "inputFields": {
+        "title": "فیلدهای ورودی",
+        "description": "ورودی متن و ایمیل",
+        "emailLabel": "ایمیل",
+        "emailPlaceholder": "ایمیل خود را وارد کنید",
+        "passwordLabel": "رمز عبور",
+        "passwordPlaceholder": "رمز عبور خود را وارد کنید"
+      },
+      "textarea": {
+        "title": "متن چندخطی",
+        "description": "ورودی چندخطی متن",
+        "placeholder": "پیام خود را اینجا بنویسید."
+      },
+      "checkbox": {
+        "title": "چک‌باکس",
+        "description": "انتخاب چند گزینه‌ای",
+        "termsLabel": "پذیرش قوانین و مقررات",
+        "newsletterLabel": "عضویت در خبرنامه"
+      },
+      "switch": {
+        "title": "سوییچ",
+        "description": "کلیدهای تغییر وضعیت",
+        "airplaneModeLabel": "حالت پرواز",
+        "notificationsLabel": "اعلان‌ها"
+      },
+      "radioGroup": {
+        "title": "گروه رادیویی",
+        "description": "انتخاب یک گزینه",
+        "optionOneLabel": "گزینه یک",
+        "optionTwoLabel": "گزینه دو"
+      },
+      "select": {
+        "title": "انتخاب‌گر",
+        "description": "انتخاب از لیست",
+        "placeholder": "یک میوه انتخاب کنید",
+        "apple": "سیب",
+        "banana": "موز",
+        "orange": "پرتقال"
+      },
+      "slider": {
+        "title": "اسلایدر",
+        "description": "انتخاب بازه",
+        "valueText": "مقدار: {value}"
+      },
+      "inputOTP": {
+        "title": "ورودی رمز یکبار مصرف",
+        "description": "ورودی رمز یکبار مصرف"
+      },
+      "toggleGroup": {
+        "title": "گروه سوییچ‌ها",
+        "description": "چندین دکمه سوییچ"
+      }
+    },
+    "feedback": {
+      "alerts": {
+        "title": "هشدارها",
+        "description": "پیام‌های مهم",
+        "successTitle": "موفقیت!",
+        "successDescription": "تغییرات شما با موفقیت ذخیره شد.",
+        "errorTitle": "خطا",
+        "errorDescription": "مشکلی در درخواست شما رخ داد."
+      },
+      "progress": {
+        "title": "پیشرفت",
+        "description": "نمایش بارگذاری",
+        "valueText": "پیشرفت: {progress}%",
+        "incrementButton": "افزایش"
+      },
+      "alertDialog": {
+        "title": "دیالوگ هشدار",
+        "description": "دیالوگ تاییدیه",
+        "deleteAccountButton": "حذف حساب کاربری",
+        "areYouAbsolutelySureTitle": "آیا مطمئن هستید؟",
+        "areYouAbsolutelySureDescription": "این عمل غیرقابل بازگشت است. حساب شما برای همیشه حذف خواهد شد.",
+        "cancel": "انصراف",
+        "continue": "ادامه"
+      },
+      "dialog": {
+        "title": "دیالوگ",
+        "description": "دیالوگ مودال",
+        "openDialogButton": "باز کردن دیالوگ",
+        "editProfileTitle": "ویرایش پروفایل",
+        "editProfileDescription": "تغییرات پروفایل خود را اینجا انجام دهید. پس از اتمام ذخیره کنید.",
+        "nameLabel": "نام",
+        "namePlaceholder": "نام خود را وارد کنید",
+        "emailLabel": "ایمیل",
+        "emailPlaceholder": "ایمیل خود را وارد کنید",
+        "saveChangesButton": "ذخیره تغییرات"
+      },
+      "drawer": {
+        "title": "دراور",
+        "description": "پنل‌های کناری",
+        "openDrawerButton": "باز کردن دراور",
+        "editProfileTitle": "ویرایش پروفایل",
+        "editProfileDescription": "تغییرات پروفایل خود را اینجا انجام دهید.",
+        "nameLabel": "نام",
+        "namePlaceholder": "نام خود را وارد کنید",
+        "emailLabel": "ایمیل",
+        "emailPlaceholder": "ایمیل خود را وارد کنید",
+        "saveChangesButton": "ذخیره تغییرات",
+        "cancelButton": "انصراف"
+      },
+      "popover": {
+        "title": "پاپ‌اور",
+        "description": "محتوای شناور",
+        "openPopoverButton": "باز کردن پاپ‌اور",
+        "dimensionsTitle": "ابعاد",
+        "dimensionsDescription": "ابعاد لایه را تنظیم کنید."
+      },
+      "tooltip": {
+        "title": "تولتیپ",
+        "description": "اطلاعات هنگام هاور",
+        "hoverMeButton": "هاور کن",
+        "tooltipText": "این یک تولتیپ است"
+      }
+    },
+    "data": {
+      "table": {
+        "title": "جدول",
+        "description": "نمایش داده‌ها",
+        "name": "نام",
+        "email": "ایمیل",
+        "status": "وضعیت",
+        "johnDoeName": "جان دو",
+        "johnDoeEmail": "john@example.com",
+        "janeSmithName": "جین اسمیت",
+        "janeSmithEmail": "jane@example.com",
+        "activeBadge": "فعال",
+        "inactiveBadge": "غیرفعال"
+      },
+      "calendar": {
+        "title": "تقویم",
+        "description": "انتخاب تاریخ"
+      },
+      "chart": {
+        "title": "نمودار",
+        "description": "بصری‌سازی داده‌ها",
+        "totalLabel": "مجموع"
+      },
+      "pagination": {
+        "title": "صفحه‌بندی",
+        "description": "ناوبری صفحات"
+      },
+      "dropdownMenu": {
+        "title": "منوی کشویی",
+        "description": "منوهای زمینه‌ای",
+        "actionsButton": "عملیات",
+        "actionsLabel": "عملیات",
+        "edit": "ویرایش",
+        "download": "دانلود",
+        "delete": "حذف",
+        "language": "زبان"
+      }
+    },
+    "footer": {
+      "builtWith": "ساخته شده با ❤️ با استفاده از shadcn/ui و Next.js",
+      "documentation": "مستندات",
+      "github": "گیت‌هاب"
+    }
+  }
+}

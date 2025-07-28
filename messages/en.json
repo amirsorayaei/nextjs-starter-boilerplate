@@ -1,0 +1,228 @@
+{
+  "welcome": "welcome",
+  "Home": {
+    "header": {
+      "title": "shadcn/ui Component Library",
+      "description": "A comprehensive showcase of all available components with beautiful examples and interactions",
+      "componentsCount": "27 Components",
+      "reactVersion": "React 19",
+      "ts": "TypeScript"
+    },
+    "tabs": {
+      "basic": "Basic Components",
+      "forms": "Form Elements",
+      "feedback": "Feedback",
+      "data": "Data Display"
+    },
+    "chart": {
+      "jan": "Jan",
+      "feb": "Feb",
+      "mar": "Mar",
+      "apr": "Apr",
+      "may": "May",
+      "jun": "Jun"
+    },
+    "basic": {
+      "buttons": {
+        "title": "Buttons",
+        "description": "Multiple variants and sizes",
+        "default": "Default",
+        "secondary": "Secondary",
+        "outline": "Outline",
+        "ghost": "Ghost",
+        "destructive": "Destructive",
+        "link": "Link",
+        "small": "Small",
+        "defaultSize": "Default",
+        "large": "Large"
+      },
+      "cards": {
+        "title": "Cards",
+        "description": "Flexible containers",
+        "contentPlaceholder": "Card Content",
+        "descriptionText": "Cards provide structure and organization"
+      },
+      "badges": {
+        "title": "Badges",
+        "description": "Status indicators",
+        "default": "Default",
+        "secondary": "Secondary",
+        "outline": "Outline",
+        "destructive": "Destructive"
+      },
+      "separator": {
+        "title": "Separator",
+        "description": "Visual dividers"
+      },
+      "skeleton": {
+        "title": "Skeleton",
+        "description": "Loading placeholders"
+      },
+      "toggle": {
+        "title": "Toggle",
+        "description": "On/off switches",
+        "settingsLabel": "Settings"
+      }
+    },
+    "forms": {
+      "inputFields": {
+        "title": "Input Fields",
+        "description": "Text and email inputs",
+        "emailLabel": "Email",
+        "emailPlaceholder": "Enter your email",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "Enter your password"
+      },
+      "textarea": {
+        "title": "Textarea",
+        "description": "Multi-line text input",
+        "placeholder": "Type your message here."
+      },
+      "checkbox": {
+        "title": "Checkbox",
+        "description": "Multiple choice selection",
+        "termsLabel": "Accept terms and conditions",
+        "newsletterLabel": "Subscribe to newsletter"
+      },
+      "switch": {
+        "title": "Switch",
+        "description": "Toggle switches",
+        "airplaneModeLabel": "Airplane Mode",
+        "notificationsLabel": "Notifications"
+      },
+      "radioGroup": {
+        "title": "Radio Group",
+        "description": "Single choice selection",
+        "optionOneLabel": "Option One",
+        "optionTwoLabel": "Option Two"
+      },
+      "select": {
+        "title": "Select",
+        "description": "Dropdown selection",
+        "placeholder": "Select a fruit",
+        "apple": "Apple",
+        "banana": "Banana",
+        "orange": "Orange"
+      },
+      "slider": {
+        "title": "Slider",
+        "description": "Range selection",
+        "valueText": "Value: {value}"
+      },
+      "inputOTP": {
+        "title": "Input OTP",
+        "description": "One-time password input"
+      },
+      "toggleGroup": {
+        "title": "Toggle Group",
+        "description": "Multiple toggle buttons"
+      }
+    },
+    "feedback": {
+      "alerts": {
+        "title": "Alerts",
+        "description": "Important messages",
+        "successTitle": "Success!",
+        "successDescription": "Your changes have been saved successfully.",
+        "errorTitle": "Error",
+        "errorDescription": "There was a problem with your request."
+      },
+      "progress": {
+        "title": "Progress",
+        "description": "Loading indicators",
+        "valueText": "Progress: {progress}%",
+        "incrementButton": "Increment"
+      },
+      "alertDialog": {
+        "title": "Alert Dialog",
+        "description": "Confirmation dialogs",
+        "deleteAccountButton": "Delete Account",
+        "areYouAbsolutelySureTitle": "Are you absolutely sure?",
+        "areYouAbsolutelySureDescription": "This action cannot be undone. This will permanently delete your account.",
+        "cancel": "Cancel",
+        "continue": "Continue"
+      },
+      "dialog": {
+        "title": "Dialog",
+        "description": "Modal dialogs",
+        "openDialogButton": "Open Dialog",
+        "editProfileTitle": "Edit Profile",
+        "editProfileDescription": "Make changes to your profile here. Click save when you're done.",
+        "nameLabel": "Name",
+        "namePlaceholder": "Enter your name",
+        "emailLabel": "Email",
+        "emailPlaceholder": "Enter your email",
+        "saveChangesButton": "Save changes"
+      },
+      "drawer": {
+        "title": "Drawer",
+        "description": "Side panels",
+        "openDrawerButton": "Open Drawer",
+        "editProfileTitle": "Edit Profile",
+        "editProfileDescription": "Make changes to your profile here.",
+        "nameLabel": "Name",
+        "namePlaceholder": "Enter your name",
+        "emailLabel": "Email",
+        "emailPlaceholder": "Enter your email",
+        "saveChangesButton": "Save changes",
+        "cancelButton": "Cancel"
+      },
+      "popover": {
+        "title": "Popover",
+        "description": "Floating content",
+        "openPopoverButton": "Open Popover",
+        "dimensionsTitle": "Dimensions",
+        "dimensionsDescription": "Set the dimensions for the layer."
+      },
+      "tooltip": {
+        "title": "Tooltip",
+        "description": "Hover information",
+        "hoverMeButton": "Hover me",
+        "tooltipText": "This is a tooltip"
+      }
+    },
+    "data": {
+      "table": {
+        "title": "Table",
+        "description": "Data presentation",
+        "name": "Name",
+        "email": "Email",
+        "status": "Status",
+        "johnDoeName": "John Doe",
+        "johnDoeEmail": "john@example.com",
+        "janeSmithName": "Jane Smith",
+        "janeSmithEmail": "jane@example.com",
+        "activeBadge": "Active",
+        "inactiveBadge": "Inactive"
+      },
+      "calendar": {
+        "title": "Calendar",
+        "description": "Date selection"
+      },
+      "chart": {
+        "title": "Chart",
+        "description": "Data visualization",
+        "totalLabel": "Total"
+      },
+      "pagination": {
+        "title": "Pagination",
+        "description": "Page navigation"
+      },
+      "dropdownMenu": {
+        "title": "Dropdown Menu",
+        "description": "Context menus",
+        "actionsButton": "Actions",
+        "actionsLabel": "Actions",
+        "edit": "Edit",
+        "download": "Download",
+        "delete": "Delete",
+        "language": "Language"
+      }
+    },
+    "footer": {
+      "builtWith": "Built with ❤️ using shadcn/ui and Next.js",
+      "documentation": "Documentation",
+      "github": "GitHub"
+    }
+  }
+}
