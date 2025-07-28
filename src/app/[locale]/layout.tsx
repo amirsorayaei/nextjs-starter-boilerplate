@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import useTextDirection from "@/hooks/useTextDirection";
+import getTextDirection from "@/hooks/getTextDirection";
 
 import "../globals.css";
 
@@ -35,7 +35,7 @@ export default async function RootLayout({
     notFound();
   }
 
-  const dir = useTextDirection(locale);
+  const dir = getTextDirection(locale);
 
   return (
     <html lang={locale} dir={dir}>
