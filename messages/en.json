@@ -1,5 +1,19 @@
 {
   "welcome": "welcome",
+  "login": {
+    "welcome": "welcome",
+    "title": "Login",
+    "description": "Login to your account",
+    "email": "Email",
+    "password": "Password"
+  },
+  "signup": {
+    "welcome": "welcome",
+    "title": "Signup",
+    "description": "Signup to your account",
+    "email": "Email",
+    "password": "Password"
+  },
   "Home": {
     "header": {
       "title": "shadcn/ui Component Library",
