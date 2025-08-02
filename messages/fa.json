@@ -1,5 +1,19 @@
 {
   "welcome": "خوش آمدید",
+  "login": {
+    "welcome": "خوش آمدید",
+    "title": "ورود",
+    "description": "ورود به حساب کاربری",
+    "email": "ایمیل",
+    "password": "رمز عبور"
+  },
+  "signup": {
+    "welcome": "خوش آمدید",
+    "title": "ثبت نام",
+    "description": "ثبت نام در حساب کاربری",
+    "email": "ایمیل",
+    "password": "رمز عبور"
+  },
   "Home": {
     "header": {
       "title": "کتابخانه کامپوننت shadcn/ui",
