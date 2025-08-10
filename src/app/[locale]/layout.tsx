@@ -4,6 +4,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import getTextDirection from "@/hooks/getTextDirection";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
 import "../globals.css";
 
@@ -40,7 +41,9 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={dir}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <ThemeProvider>
+          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

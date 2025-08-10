@@ -133,6 +133,7 @@ import {
 } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/navigation";
+import { ThemeSwitcher } from "@/components/ui/theme-switcher";
 
 export default function Home() {
   const t = useTranslations("Home");
@@ -163,8 +164,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-4">
-      {/* Language Switcher */}
-      <div className="flex justify-end mb-4">
+      {/* Language and Theme Switchers */}
+      <div className="flex justify-end gap-2 mb-4">
+        <ThemeSwitcher />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline">

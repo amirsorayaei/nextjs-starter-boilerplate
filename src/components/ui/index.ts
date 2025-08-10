@@ -9,3 +9,5 @@ export {
 } from "./card";
 export { Input } from "./input";
 export { Label } from "./label";
+export { ThemeSwitcher } from "./theme-switcher";
+export { ThemeToggle } from "./theme-toggle";
